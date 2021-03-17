@@ -1,8 +1,8 @@
 // ---------------- 標準ライブラリ ------------------- //
 #include <bits/stdc++.h>
 using namespace std;
-// #include <atcoder/all>
-// using namespace atcoder;
+#include <atcoder/all>
+using namespace atcoder;
 // ----------------- よく使う ------------------------ */
 #define rep(i,n) for(int i = 0; i < (n); ++i)
 #define rrep(i,n) for(int i = 1; i <= (n); ++i)
@@ -11,9 +11,9 @@ using namespace std;
 #define reps(c,s) for (auto c : s)
 #define rng(a) a.begin(),a.end()
 #define rrng(a) a.rbegin(),a.rend()  // 右から読む.reverse
-#define all(x) (x).begin(),(x).end()
 #define sortu(x) sort((x).begin(),(x).end())
 #define sortd(x) sort((x).begin(),(x).end(), greater<int>())
+#define sortdll(x) sort((x).begin(),(x).end(), greater<ll>())
 #define pb push_back
 #define eb emplace_back
 #define sz(x) (int)(x).size()
@@ -36,12 +36,12 @@ template<typename T>bool maxs(T& x,const T&y){if(x<y){x=y;return true;}else retu
 template<typename T>ll suma(const v(T)&a){ll res(0);for(auto&&x:a)res+=x;return res;}
 //----------------- 定数 ---------------------*/
 const ll LINF = 1001002003004005006ll;
-const int INF = 1001001;
+const int INF = 1001001001;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
 const int Max_T = 200005;
 //----------------- 出力 ---------------------*/
-#define shousuu cout << fixed << setprecision(15);
+#define shousuu cout << fixed << setprecision(15)
 #define dame0 { puts("0"); return 0;}  // ; 含む
 #define dame1 { puts("-1"); return 0;}
 #define damen { puts("No"); return 0;}
@@ -67,18 +67,25 @@ const int Max_T = 200005;
 //int a[33][4];
 //vi a{1,2,3};
 // vvi dp(n+1, vi(3));  n+1行、3列
-bool flg = false;
+bool flg = true;
 // flg = true;
 
-
 int main(){
-    int v, e; cin >> v >> e;
-    rep(i,e){
-        cin3
+    int a, b, w; cin >> a >> b >> w;
+    w *= 1000;
+    int ans1=INF, ans2=0;
+    rrep(i,w){
+        if(a*i <= w && w <= b*i) {
+            mins(ans1, i);
+            maxs(ans2, i);
+        }
     }
+    if(ans1==INF) out("UNSATISFIABLE")
+    else {out(ans1); out(ans2)}
 }
 
  /*
-g++ a.cpp -std=c++17 -I .
+g++ b.cpp -std=c++17 -I .
 ./a.out
+
 */

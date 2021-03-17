@@ -1,8 +1,8 @@
 // ---------------- 標準ライブラリ ------------------- //
 #include <bits/stdc++.h>
 using namespace std;
-// #include <atcoder/all>
-// using namespace atcoder;
+#include <atcoder/all>
+using namespace atcoder;
 // ----------------- よく使う ------------------------ */
 #define rep(i,n) for(int i = 0; i < (n); ++i)
 #define rrep(i,n) for(int i = 1; i <= (n); ++i)
@@ -11,7 +11,6 @@ using namespace std;
 #define reps(c,s) for (auto c : s)
 #define rng(a) a.begin(),a.end()
 #define rrng(a) a.rbegin(),a.rend()  // 右から読む.reverse
-#define all(x) (x).begin(),(x).end()
 #define sortu(x) sort((x).begin(),(x).end())
 #define sortd(x) sort((x).begin(),(x).end(), greater<int>())
 #define pb push_back
@@ -36,12 +35,12 @@ template<typename T>bool maxs(T& x,const T&y){if(x<y){x=y;return true;}else retu
 template<typename T>ll suma(const v(T)&a){ll res(0);for(auto&&x:a)res+=x;return res;}
 //----------------- 定数 ---------------------*/
 const ll LINF = 1001002003004005006ll;
-const int INF = 1001001;
+const int INF = 1001001001;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
 const int Max_T = 200005;
 //----------------- 出力 ---------------------*/
-#define shousuu cout << fixed << setprecision(15);
+#define shousuu cout << fixed << setprecision(15)
 #define dame0 { puts("0"); return 0;}  // ; 含む
 #define dame1 { puts("-1"); return 0;}
 #define damen { puts("No"); return 0;}
@@ -69,16 +68,34 @@ const int Max_T = 200005;
 // vvi dp(n+1, vi(3));  n+1行、3列
 bool flg = false;
 // flg = true;
+// int digit_sum(ll n) {
+//     int res = 0;
+//     while(n > 0) {
+//         // res += n%10; //桁和
+//         res++; //桁数
+//         n /= 10;
+//     }
+//     return res;
+// }
 
-
-int main(){
-    int v, e; cin >> v >> e;
-    rep(i,e){
-        cin3
+int main() {
+    ll n; cin>>n;
+    // i番目のコンマが打たれる数
+    ll ans = 0;
+    for(ll i=1000; i<=n; i*=1000){
+        ans += n-i+1;
     }
+    outa
 }
 
+
  /*
-g++ a.cpp -std=c++17 -I .
+g++ c.cpp -std=c++17 -I .
 ./a.out
+
+oj d
+oj t
+
+debug:ctrl+shift+B problemin f5
+ctrl+l リセット
 */

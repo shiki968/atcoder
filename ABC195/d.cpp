@@ -1,8 +1,8 @@
 // ---------------- 標準ライブラリ ------------------- //
 #include <bits/stdc++.h>
 using namespace std;
-// #include <atcoder/all>
-// using namespace atcoder;
+#include <atcoder/all>
+using namespace atcoder;
 // ----------------- よく使う ------------------------ */
 #define rep(i,n) for(int i = 0; i < (n); ++i)
 #define rrep(i,n) for(int i = 1; i <= (n); ++i)
@@ -11,7 +11,6 @@ using namespace std;
 #define reps(c,s) for (auto c : s)
 #define rng(a) a.begin(),a.end()
 #define rrng(a) a.rbegin(),a.rend()  // 右から読む.reverse
-#define all(x) (x).begin(),(x).end()
 #define sortu(x) sort((x).begin(),(x).end())
 #define sortd(x) sort((x).begin(),(x).end(), greater<int>())
 #define pb push_back
@@ -36,7 +35,7 @@ template<typename T>bool maxs(T& x,const T&y){if(x<y){x=y;return true;}else retu
 template<typename T>ll suma(const v(T)&a){ll res(0);for(auto&&x:a)res+=x;return res;}
 //----------------- 定数 ---------------------*/
 const ll LINF = 1001002003004005006ll;
-const int INF = 1001001;
+const int INF = 1001001001;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
 const int Max_T = 200005;
@@ -70,15 +69,48 @@ const int Max_T = 200005;
 bool flg = false;
 // flg = true;
 
-
-int main(){
-    int v, e; cin >> v >> e;
-    rep(i,e){
-        cin3
+int main() {
+    int n, m, q; cin >> n >> m >> q;  // n=荷物、m=箱
+    vector<int> w(n),V(n); rep(i, n) cin >> w[i] >> V[i];
+    vector<int> x(m); rep(i, m) cin >> x[i]; // 箱の容量
+    
+    rep(qi,q){
+        int l, r; cin >> l >> r;
+        l--; r--;
+        vi a;
+        rep(i,m){
+            if(i<l || r<i) a.pb(x[i]);
+        }
+        sortu(a);
+        ll ans = 0;
+        // 価値が大きい荷物を、小さい箱に入れる
+        vector<bool> used(n);
+        for(int b : a){
+            // 小さい箱から入れる。
+            // int mx_V = -1;
+            // int mx_i = -1;
+            P p(-1,-1);
+            rep(i,n){
+                if(used[i]) continue;
+                if(w[i] > b) continue;
+                maxs(p,mp(V[i],i));
+            }
+            if(p.se==-1) continue;
+            used[p.se] = 1;
+            ans + p.fi;
+        }
+        outa
     }
+
 }
 
  /*
-g++ a.cpp -std=c++17 -I .
+g++ d.cpp -std=c++17 -I .
 ./a.out
+
+oj d
+oj t
+
+debug:ctrl+shift+B problemin f5
+ctrl+l リセット
 */

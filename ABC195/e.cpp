@@ -1,8 +1,8 @@
 // ---------------- 標準ライブラリ ------------------- //
 #include <bits/stdc++.h>
 using namespace std;
-// #include <atcoder/all>
-// using namespace atcoder;
+#include <atcoder/all>
+using namespace atcoder;
 // ----------------- よく使う ------------------------ */
 #define rep(i,n) for(int i = 0; i < (n); ++i)
 #define rrep(i,n) for(int i = 1; i <= (n); ++i)
@@ -11,12 +11,11 @@ using namespace std;
 #define reps(c,s) for (auto c : s)
 #define rng(a) a.begin(),a.end()
 #define rrng(a) a.rbegin(),a.rend()  // 右から読む.reverse
-#define all(x) (x).begin(),(x).end()
 #define sortu(x) sort((x).begin(),(x).end())
 #define sortd(x) sort((x).begin(),(x).end(), greater<int>())
 #define pb push_back
 #define eb emplace_back
-#define sz(x) (int)(x).size()
+#define sz(x) (int)(x).size()  // sizeはunsignedなので、intにいれないと-1できない
 using ll = long long int;
 using vi = vector<int>;
 using vl = vector<ll>;
@@ -36,13 +35,14 @@ template<typename T>bool maxs(T& x,const T&y){if(x<y){x=y;return true;}else retu
 template<typename T>ll suma(const v(T)&a){ll res(0);for(auto&&x:a)res+=x;return res;}
 //----------------- 定数 ---------------------*/
 const ll LINF = 1001002003004005006ll;
-const int INF = 1001001;
+const int INF = 1001001001;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
 const int Max_T = 200005;
 //----------------- 出力 ---------------------*/
+// 全て「；」含む。使用時は最後に「；」をつけなくてよい。
 #define shousuu cout << fixed << setprecision(15);
-#define dame0 { puts("0"); return 0;}  // ; 含む
+#define dame0 { puts("0"); return 0;}
 #define dame1 { puts("-1"); return 0;}
 #define damen { puts("No"); return 0;}
 #define yosi { puts("Yes"); return 0;}
@@ -70,15 +70,39 @@ const int Max_T = 200005;
 bool flg = false;
 // flg = true;
 
-
 int main(){
-    int v, e; cin >> v >> e;
-    rep(i,e){
-        cin3
+    int n; cin>>n;
+    string s; cin >> s;
+    string t; cin >> t;
+    
+    vi dp(7);  // i文字目まで決まっていて、mod7がjのときに勝つ方
+    dp[0] = 1; // Takahashi win(mod7が0)
+    int ten = 1;
+    drep(i,n){
+        vi old(7);
+        swap(dp, old);
+        rep(j,7){
+            int nj = (j + (s[i]-'0')*ten)%7;
+            if(t[i] == 'T'){
+                dp[j] = old[j] | old[nj];
+            }else{
+                dp[j] = old[j] & old[nj];                
+            }
+        }
+        ten = (ten*10)%7;
     }
+    if(dp[0]) cout << "Takahashi" << endl;
+    else cout << "Aoki" << endl;
 }
 
+
  /*
-g++ a.cpp -std=c++17 -I .
+g++ e.cpp -std=c++17 -I .
 ./a.out
+
+oj d
+oj t
+
+debug:ctrl+shift+B problemin f5
+ctrl+l リセット
 */

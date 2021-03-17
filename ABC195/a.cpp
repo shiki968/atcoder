@@ -72,13 +72,10 @@ bool flg = false;
 
 
 int main(){
-    int v, e; cin >> v >> e;
-    rep(i,e){
-        cin3
-    }
 }
 
  /*
 g++ a.cpp -std=c++17 -I .
 ./a.out
+
 */
