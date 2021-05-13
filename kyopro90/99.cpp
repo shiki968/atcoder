@@ -39,7 +39,8 @@ const ll LINF = 9223372036854775807LL;
 const int INF = 2147483647;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
-const int Max_T = 200005;
+const int MX_T = 200005;
+const long double PI = 3.14159265358979;
 //----------------- 出力 ---------------------*/
 #define shousuu cout << fixed << setprecision(15);
 #define hr cout << "================================" << endl;

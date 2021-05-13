@@ -40,6 +40,7 @@ const int INF = 2147483647;
 const int MOD1 = 1e9+7;
 const int MOD9 = 998244353;
 const int Max_T = 200005;
+const long double PI = 3.14159265358979;
 //----------------- 出力 ---------------------*/
 #define shousuu cout << fixed << setprecision(15);
 #define hr cout << "================================" << endl;
@@ -72,35 +73,35 @@ bool flg = false;
 // flg = true;
 
 /*  (問題の概要、図)
-最小公倍数を人力で求める
-8,6 = 24
-公倍数の全検索はダメ。
-8*i%6を全検索もダメ。
 
-8 = 2*4
-6 = 2*3
-
-共通の*2を片方消す。2*4*3 = 24
-
-約数全部出す。
-
-2*3 <= 8
-2 <= [8 / 3]
 
 */
 
-
 int main(){
-    ll a,b; cin>>a>>b;
-    // lcm(a,b) = a * b / gcd(a,b)
-    ll r = b / gcd(a,b);
-    // 1e18はdouble型
-    if(r > (ll)1e18 / a) out("Large")
-    else out(r*a)
+    // 入力の時点でdouble
+    double t; cin>>t;
+    double l, x, y; cin >> l >> x >> y;
+    int q; cin>>q;
+    shousuu;
+    rep(i,q){
+        double e; cin>>e;
+        //観覧車の位置（ラジアン）
+        double theta = (double)e/t*2.0*PI;
+        int xe = 0;
+        double ye = (double)(-l)/2.0*sin(theta);
+        double ze = (double)(l)/2.0 - (double)l/2.0*cos(theta);
+        // cout << ye << " " << ze << endl;
+        
+        //atan(y,x);
+        double a = sqrt(abs(ye-y)*abs(ye-y) + x*x);
+        double b = ze;
+        //出力は弧度
+        cout << atan2(b,a) * 180.0L / PI << endl;
+    }
 }
 
  /*
-g++ 38.cpp -std=c++17 -I .
+g++ 18.cpp -std=c++17 -I .
 ./a.out
 
 cd "/mnt/c/Users/kmhss/OneDrive/programming/AtCoder/atcoder/kyopro90"
